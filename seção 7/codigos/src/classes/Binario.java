@@ -2,7 +2,7 @@ package classes;
 
 import java.util.Scanner;
 // testando um bit com código em binário
-public class binaro {
+public class Binario {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         int mask = 0b100000;

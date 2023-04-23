@@ -17,7 +17,7 @@ LastIndexOf -  busca a ultima ocorrencia da string (em posição)
     str.Split(" "): recortar o string com base no separador que for informado
 
 */
-public class strings {
+public class Tipostrings {
     public static void main(String[] args) throws Exception {
         
     String original = "abcde FGHIJ ABC abc DEFG    ";
