@@ -1,9 +1,9 @@
-package classes;
+package application;
 
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Compoo {
+public class Sempoo {
     public static void main(String[] args) throws Exception {
 
         Locale.setDefault(Locale.US);
