@@ -10,7 +10,7 @@ public class Triangle {
     public double c;
 
     // Criando um método (função) que calcule a área do triângulo
-    // essa função não receerá parãmetros, por isso o parênteses não tem nada dentro
+    // essa função não receberá parãmetros, por isso o parênteses não tem nada dentro
     public double area() {
         double p = (a + b + c) / 2.0;
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
