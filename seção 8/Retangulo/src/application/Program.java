@@ -18,5 +18,6 @@ public class Program {
         System.out.printf("Perimeter = %.2f%n", rect.perimeter());
         System.out.printf("Diagonal = %.2f%n", rect.diagonal());
         
+        sc.close();
     }
 }
