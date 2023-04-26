@@ -1,4 +1,4 @@
-package entities;
+package entities; // pacote da classe
 
 public class Triangle {
     
