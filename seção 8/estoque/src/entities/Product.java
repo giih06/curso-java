@@ -23,4 +23,9 @@ public class Product {
         this.quantity -= quantity;
     }
 
+    // Como a minha classe product também é um object,estou sobrepondo a operação toString padrão que já vem no object. entao dentro desses{ } vou poder implementar a minha versão do toString
+    public String toString() {
+        return name + ", $ " + String.format("%.2f", price) + ", " + quantity + " units, Total: $ " + String.format("%.2f", totalValueInStock());
+    }
+
 }

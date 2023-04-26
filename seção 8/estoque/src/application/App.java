@@ -30,6 +30,18 @@ public class App {
         // façp a leitura da quantidade em estoque e guardo dentro da variável product no campo quantity
         product.quantity = sc.nextInt();
 
+        // operações (toString converte o objeto para string)
+        // não preciso chamar o .toString já que o vscode detecta que o meu objeto está num contexto de um println que está esperando um string e implicitamente ele vai chamar o toString.
+        System.out.println("\nProduct data: " + product);
+        System.out.print("\nEnter the number of products to be added in stock:");
+        int quantity = sc.nextInt();
+        product.addProducts(quantity);
+        System.out.println("\nUpdated data: " + product);
+        System.out.print("\nEnter the number of products to be removed from stock: ");
+        quantity = sc.nextInt();
+        product.removeProducts(quantity);
+        System.out.print("\nUpdated data: " + product);
+
 
 
         sc.close();
