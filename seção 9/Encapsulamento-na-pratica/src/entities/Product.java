@@ -1,6 +1,12 @@
 package entities;
 
 public class Product {
+    /* Atenção! Para gerar todos os getters e setters da classe
+     * automaticamente:
+     * botao direito -> Ação de origem -> geerate getters and setters
+     * Para gerar todos os construtores da classe:
+     * botao direito -> Ação de origem -> Generate constructors
+     */
 
     //atributos encapsulador (private)
     private String name;
