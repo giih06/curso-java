@@ -3,7 +3,7 @@ public class Exemplo {
 
     /* Padrão para implementação de getters e setters */
 
-    /* a palavra "private" serve para dizer que esses atributos não podem ser acessados por outras classes */
+    /* a palavra "private" serve para dizer que esses atributos só podem ser acessados na própria classe */
     private String name;
     private double price;
 
