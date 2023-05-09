@@ -4,6 +4,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Program {
+    // Criando vetores
+    /* Problema : Fazer um programa para ler um número inteiro N e a altura de N
+    pessoas. Armazene as N alturas em um vetor. Em seguida, mostrar a
+    altura média dessas pessoas. */
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
