@@ -24,19 +24,36 @@ public class Alturas {
         for(int i=0; i<n; i++){
             System.out.printf("Dados da %da pessoa: ", i + 1);
             System.out.print("\nNome: ");
-            nomes[i] = sc.nextLine();
-            System.out.print("\nIdade: ");
+            nomes[i] = sc.next();
+            System.out.print("Idade: ");
             idades[i] = sc.nextInt();
-            System.out.print("\nAltura: ");
+            System.out.print("Altura: ");
             alturas[i] = sc.nextDouble();
         }
 
+        // calculando o numero de menores de idade
+        nmenores = 0;
+        alturaTotal = 0;
+        for(int i=0; i<n; i++){
+            if(idades[i] < 16){
+                nmenores++;
+            }
+            alturaTotal += alturas[i]; // calculando altura total
+        }
+
+        alturaMedia = alturaTotal / n;
+        percentualMenores = ((double)nmenores / n) * 100;
+
+        System.out.printf("Altura média %.2f", alturaMedia);
+        System.out.printf("\nPessoas com menos de 16 anos: %.1f%%", percentualMenores);
+
+        // Mostrando os nomes dos menore de idade
+        for(int i=0; i<n; i++){
+            if(idades[i] < 16){
+                System.out.printf("\n%s", nomes[i]);
+            }
+        }
         
-
-
-
-
-
         sc.close();
     }
 }
