@@ -3,7 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Dados_pessoas {
+public class teste {
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
@@ -35,13 +35,13 @@ public class Dados_pessoas {
                 maiorAltura = alturas[i];
             }
         }
-        System.out.printf("\nMenor altura = %.2f", menorAltura);
+        System.out.printf("Menor altura = %.2f", menorAltura);
         System.out.printf("\nMaior altura = %.2f", maiorAltura);
 
         // Calculando a media das alturas das mulheres e homens
         for(int i=0; i<n; i++) {
             if(genero[i]=='F') {
-                totalAlturasMulheres += genero[i];
+                totalAlturasMulheres += alturas[i];
                 nmulheres++;
             } else {
                 nhomens++;
