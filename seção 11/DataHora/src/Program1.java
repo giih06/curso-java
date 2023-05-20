@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Program01 {
+public class Program1 {
     public static void main(String[] args) throws Exception {
         /* Instanciação */
         /* (agora) --> Data-hora */
