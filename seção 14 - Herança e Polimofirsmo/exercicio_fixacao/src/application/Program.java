@@ -12,6 +12,7 @@ import entities.Product;
 import entities.UsedProduct;
 
 public class Program {
+
     public static void main(String[] args) throws Exception {   
 
         Locale.setDefault(Locale.US);
@@ -23,10 +24,10 @@ public class Program {
         int n = sc.nextInt();
 
         for(int i=0; i<n; i++) {
-            System.out.println("Product #" + i + " data:");
-            System.out.print("Common, used or imported (c/u/i)?");
+            System.out.println("Product #" + (i+1) + " data:");
+            System.out.print("Common, used or imported (c/u/i)? ");
             char ch = sc.next().charAt(0);
-            System.out.println("Name: ");
+            System.out.print("Name: ");
             sc.nextLine();
             String name = sc.nextLine();
             System.out.print("Price: ");

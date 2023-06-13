@@ -30,7 +30,7 @@ public final class UsedProduct extends Product{
 
     @Override // método sobreposto
     public final String priceTag() {
-        return getName() + "(used) $ " + String.format("%.2f", getPrice()) + " (Manufacture date: " + manufactureDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ")";
+        return getName() + " (used) $ " + String.format("%.2f", getPrice()) + " (Manufacture date: " + manufactureDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ")";
     }
 
     

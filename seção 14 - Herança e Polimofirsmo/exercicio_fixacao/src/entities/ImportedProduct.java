@@ -27,7 +27,7 @@ public final class ImportedProduct extends Product {
     
     @Override // método sobreposto
     public final String priceTag() {
-        return super.priceTag() + "(Customs fee: $ " + getCustomsFee() + ")";
+        return super.priceTag() + " (Customs fee: $ " + getCustomsFee() + ")";
     }
      
 
