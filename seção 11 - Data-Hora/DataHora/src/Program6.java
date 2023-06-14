@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.Calendar;
 
 public class Program6 {
-    // Manipulando uma data com Calendar ( versão antida do java)
+    // Manipulando uma data com Calendar ( versão antiga do java)
     public static void main(String[] args) throws Exception {
         /* Somando uma unidade de tempo */
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

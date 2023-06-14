@@ -5,7 +5,7 @@ import java.time.ZoneId;
 
 public class Programa3 {
     public static void main(String[] args) throws Exception {
-        /* Converter data-hora global oara local */
+        /* Converter data-hora global para local */
 
         // Data-hora global, timezone(sistema local) --> Data-hora local
 
