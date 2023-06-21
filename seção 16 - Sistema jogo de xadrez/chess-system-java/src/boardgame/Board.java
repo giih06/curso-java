@@ -40,6 +40,10 @@ public class Board {
         return pieces[position.getRow()][position.getColumn()];
     }
 
+    // this methos place the piece where the users choose
+    public void placePiece(Piece piece, Position position) {
+        pieces[position.getRow()][position.getColumn()] = piece;
+    }
     
 
     
