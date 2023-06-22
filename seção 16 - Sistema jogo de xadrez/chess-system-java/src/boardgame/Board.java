@@ -47,6 +47,7 @@ public class Board {
             throw new BoardExeption("There is already a piece on position" + position);
         }
         pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
     }
 
     // this position exists or not
