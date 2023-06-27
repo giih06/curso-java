@@ -12,7 +12,7 @@ public class Pawn extends ChessPiece {
 		super(board, color);
 	}
 
-    // method
+    // possible moves of a pawn
 	@Override
 	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
