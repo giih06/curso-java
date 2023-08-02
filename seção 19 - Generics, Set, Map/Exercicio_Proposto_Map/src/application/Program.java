@@ -8,7 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Program {
+public class Pr
+ogram {
 
 	public static void main(String[] args) throws ParseException {
 
