@@ -30,7 +30,7 @@ public class Program {
             // Lê cada linha da lista
             String line = br.readLine();
             while (line != null) {
-                String[] fields = line.split(", ");
+                String[] fields = line.split(",");
                 list.add(new Employee(fields[0], fields[1], Double.parseDouble(fields[2])));
                 line = br.readLine();
             }
@@ -52,7 +52,7 @@ public class Program {
                     .filter(x -> x.getName().charAt(0) == 'M') // filtrei todos os nomes que começam com a letra M
                     .map(x -> x.getSalary()) // peguei o salário deles
                     .reduce(0.0, (x,y) -> x + y); // somei o salário deles
-            System.out.println("Sum of salary from people whose name starts with 'M' : " + String.format("$.2f", sum));
+            System.out.println("Sum of salary from people whose name starts with 'M' : " + String.format("%.2f", sum));
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
