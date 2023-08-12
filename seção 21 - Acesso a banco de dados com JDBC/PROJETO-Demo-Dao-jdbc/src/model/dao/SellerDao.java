@@ -2,6 +2,7 @@ package model.dao;
 
 import java.util.List;
 
+import model.entities.Department;
 import model.entities.Seller;
 // Dao significa Data Acess Object e essa classe é responsável por fazer acesso a dados relacionados a entidade Seller
 public interface SellerDao {
@@ -20,4 +21,7 @@ public interface SellerDao {
 
     // Operação responsável por consultar no banco de dados todos os dados de seller
     List<Seller> findAll();
+
+    // Busca os vendedores dado o departamento
+    List<Seller> findByDepartment(Department department);
 }

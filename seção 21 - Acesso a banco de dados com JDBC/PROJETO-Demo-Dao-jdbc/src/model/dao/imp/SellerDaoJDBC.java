@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DB;
 import db.DbException;
@@ -23,20 +26,16 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public void insert(Seller obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+        
     }
 
     @Override
     public void update(Seller obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+
     }
 
     @Override
@@ -45,7 +44,7 @@ public class SellerDaoJDBC implements SellerDao {
         ResultSet rs = null; // guarda o resultado da consulta em formato de tabela
         try{
             st = conn.prepareStatement(
-                "SELECT seller.*,department.Name as " + "DepName "// Busca todos os campos do vendedor + o departamento. Esse departamento é apelidado de Depname
+                "SELECT seller.*,department.Name as " + "DepName "// Busca todos os campos do vendedor + o nome do departamento. Esse departamento é apelidado de Depname
                 + "FROM seller INNER JOIN department "//é realizado um join para realizar os dados das duas tabelas(seller e department)
                 + "ON seller.DepartmentId = department.Id "
                 + "WHERE seller.Id = ?"); // restrução: onde id do seller é ...(valor do id)
@@ -91,8 +90,51 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public List<Seller> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        return null;
     }
+
+    // Busca os vendedores dado o departamento
+    @Override
+    public List<Seller> findByDepartment(Department department) {
+        PreparedStatement st = null; // prepara uma consulta sql
+        ResultSet rs = null; // guarda o resultado da consulta em formato de tabela
+        try{
+            st = conn.prepareStatement(
+                "SELECT seller.*,department.Name as DepName "//Busca todos os campos do vendedor + o nome do departamento. Esse departamento é apelidado de Depname
+                + "FROM seller INNER JOIN department "//é realizado um join para realizar os dados das duas tabelas(seller e department)
+                + "ON seller.DepartmentId = department.Id "
+                + "WHERE DepartmentId = ? "// //Onde o departmentId for um certo valor
+                + "ORDER BY Name");// ordena o resultado por nome
+            st.setInt(1, department.getId()); 
+            rs = st.executeQuery();// O comando do sql é executado e o resultado pertencer à variável rs
+
+            List<Seller> list = new ArrayList<>();
+            Map<Integer, Department> map = new HashMap<>();// map do id do departamento
+
+            // testa se a consulta gerou resultado
+            while (rs.next()) { // se gerou, então executará normalmente a tabela
+                // Busca dentro do map se o DepartmentId inserido ja existe, se n existir o map.get retorna nulo e será instanciado o departamento
+                Department dep = map.get(rs.getInt("DepartmentId"));
+                if(dep == null) {
+                    dep = instantiateDepartment(rs);
+
+                    // salva o departamento dentro do map para que a próxima vez possa ser verificado se esse dep já existe
+                    map.put(rs.getInt("DepartmentId"), dep);
+                }
+                Seller obj = instantiateSeller(rs, dep);
+                list.add(obj);
+            }
+            return list; // retorna a lista
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            // fecha a conexão
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+
     
 }
