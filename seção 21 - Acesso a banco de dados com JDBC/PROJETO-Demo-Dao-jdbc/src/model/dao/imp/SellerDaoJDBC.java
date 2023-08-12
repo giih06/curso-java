@@ -90,7 +90,43 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public List<Seller> findAll() {
-        return null;
+        PreparedStatement st = null; // prepara uma consulta sql
+        ResultSet rs = null; // guarda o resultado da consulta em formato de tabela
+        try{
+            st = conn.prepareStatement(
+                "SELECT seller.*,department.Name as DepName "//Busca todos os campos do vendedor + o nome do departamento. Esse departamento é apelidado de Depname
+                + "FROM seller INNER JOIN department "//é realizado um join para realizar os dados das duas tabelas(seller e department)
+                + "ON seller.DepartmentId = department.Id "
+                + "ORDER BY Name");// ordena o resultado por nome
+
+            rs = st.executeQuery();// O comando do sql é executado e o resultado pertencer à variável rs
+
+            List<Seller> list = new ArrayList<>();
+            Map<Integer, Department> map = new HashMap<>();// map do id do departamento
+
+            // testa se a consulta gerou resultado
+            while (rs.next()) { // se gerou, então executará normalmente a tabela
+                // Busca dentro do map se o DepartmentId inserido ja existe, se n existir o map.get retorna nulo e será instanciado o departamento
+                Department dep = map.get(rs.getInt("DepartmentId"));
+                if(dep == null) {
+                    dep = instantiateDepartment(rs);
+
+                    // salva o departamento dentro do map para que a próxima vez possa ser verificado se esse dep já existe
+                    map.put(rs.getInt("DepartmentId"), dep);
+                }
+                Seller obj = instantiateSeller(rs, dep);
+                list.add(obj);
+            }
+            return list; // retorna a lista
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            // fecha a conexão
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 
     // Busca os vendedores dado o departamento
