@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Program",
+            "request": "launch",
+            "mainClass": "com.giovanna.aulajpa.aplicacao.Program",
+            "projectName": "aulajpa"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AulajpaApplication<aulajpa>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.giovanna.aulajpa.AulajpaApplication",
+            "projectName": "aulajpa",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
