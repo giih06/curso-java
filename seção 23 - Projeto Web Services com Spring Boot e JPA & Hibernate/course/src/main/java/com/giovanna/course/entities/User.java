@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.giovanna.course.repositories.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +28,7 @@ public class User implements Serializable{
     private String password;
 
     // associacões
+    @JsonIgnore // Comando para evitar loopings(bug)
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();// Essa lista de pedidos do usuário é uma coleção
 

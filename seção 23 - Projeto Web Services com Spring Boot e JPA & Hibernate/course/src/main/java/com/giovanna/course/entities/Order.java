@@ -1,9 +1,9 @@
-package com.giovanna.course.repositories;
+package com.giovanna.course.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.giovanna.course.entities.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +22,9 @@ public class Order implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)// dizendo pro JPA que o Id é uma chave auto implementável no banco de dados ( já que ela é numérica)
     // atributos 
     private Long id;
+    
+    // Padronizando o instante
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
     // associação

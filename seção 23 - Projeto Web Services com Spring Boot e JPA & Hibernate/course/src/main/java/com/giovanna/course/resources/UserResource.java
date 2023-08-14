@@ -15,7 +15,7 @@ import com.giovanna.course.services.UserService;
 // recurso web da classe USer
 @RestController
 @RequestMapping(value = "/users")
-public class UserResources {
+public class UserResource {
 
     @Autowired
     private UserService service;
