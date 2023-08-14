@@ -1,11 +1,15 @@
 package com.giovanna.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.giovanna.course.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,7 +18,7 @@ public class OrderItem implements Serializable{
     
     // atributos
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -30,8 +34,14 @@ public class OrderItem implements Serializable{
         this.price = price;
     }
 
+    // Um pedido para vários pedidos de itens
+    @OneToMany
+    private Set<OrderItem> items = new HashSet<>();
+
     // getters e setters
 
+    // loop (erro) resolvido: o getOrder estava chamando o Order associado ao OrderItem em um looping infinito
+    @JsonIgnore
     public Order getOrder() {
 		return id.getOrder();
 	}

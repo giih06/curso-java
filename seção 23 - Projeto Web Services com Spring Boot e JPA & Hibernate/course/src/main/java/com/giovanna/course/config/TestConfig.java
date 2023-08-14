@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.giovanna.course.entities.Category;
 import com.giovanna.course.entities.Order;
+import com.giovanna.course.entities.OrderItem;
 import com.giovanna.course.entities.Product;
 import com.giovanna.course.entities.User;
 import com.giovanna.course.entities.enums.OrderStatus;
 import com.giovanna.course.repositories.CategoryRepository;
+import com.giovanna.course.repositories.OrderItemRepository;
 import com.giovanna.course.repositories.OrderRepository;
 import com.giovanna.course.repositories.ProductRepository;
 import com.giovanna.course.repositories.UserRepository;
@@ -35,6 +37,9 @@ public class TestConfig implements CommandLineRunner{
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired 
+    private OrderItemRepository orderItemRepository;
 
     // TUdo dentro desse método vai ser executado quando a aplicação for iniciada
     @Override
@@ -78,5 +83,13 @@ public class TestConfig implements CommandLineRunner{
 		p5.getCategories().add(cat2);
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+        // order item do pedido 1, produto 1, quantidade 2
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));	
     }  
 }
