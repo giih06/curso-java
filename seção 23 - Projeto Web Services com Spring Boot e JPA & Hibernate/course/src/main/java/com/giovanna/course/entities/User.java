@@ -28,6 +28,7 @@ public class User implements Serializable{
     private String password;
 
     // associacões
+    // Um usuário para vários pedidos 
     @JsonIgnore // Comando para evitar loopings(bug)
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();// Essa lista de pedidos do usuário é uma coleção

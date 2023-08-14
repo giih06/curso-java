@@ -1,12 +1,15 @@
 package com.giovanna.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 // Entitade do sistama gerenciado pela JPA = @entity em cima da classe
 @Entity
 @Table(name = "tb_category") // nome da tabela
@@ -18,6 +21,9 @@ public class Category implements Serializable{
     private String name;
 
     // associações
+    // de 1 categoria para muitos produtos
+    @Transient
+	private Set<Product> products = new HashSet<>();
 
     // construtores
     public Category() {
@@ -43,6 +49,10 @@ public class Category implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
     }
 
     // hashCode e Equals do id
