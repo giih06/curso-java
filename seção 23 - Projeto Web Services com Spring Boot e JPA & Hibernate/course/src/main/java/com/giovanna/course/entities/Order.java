@@ -8,6 +8,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.giovanna.course.entities.enums.OrderStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 // Essa classe será uma tabela no banco de dados
@@ -40,6 +42,13 @@ public class Order implements Serializable{
     @JoinColumn(name = "client_id")
     private User client;
 
+    @OneToMany(mappedBy = "id.order")// o id tem o pedido
+	private Set<OrderItem> items = new HashSet<>();// o order item tem o id
+
+    // Um pedido tem um pagamento
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)// payment depende de order
+	private Payment payment;
+
     // construtores
     public Order() {
     }
@@ -50,9 +59,6 @@ public class Order implements Serializable{
         setOrderStatus(orderStatus);;
         this.client = client;
     }
-
-    @OneToMany(mappedBy = "id.order")// o id tem o pedido
-	private Set<OrderItem> items = new HashSet<>();// o order item tem o id
 
     // getters e setters
     public Long getId() {
@@ -89,9 +95,19 @@ public class Order implements Serializable{
         this.client = client;
     }
 
+    public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
     public Set<OrderItem> getItems() {
 		return items;
 	}
+
+    
 
     // hashCode e equals para id
     @Override
