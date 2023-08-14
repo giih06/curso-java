@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.giovanna.course.entities.User;
 import com.giovanna.course.repositories.UserRepository;
+import com.giovanna.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -22,7 +23,7 @@ public class UserService {
     // achar o usuário pelo id
     public User finfById(Long id) {
         Optional<User> obj =  repository.findById(id);
-        return obj.get(); // retorna um objeto do tipo user que estiver dentro do option
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id)); // tenta dar o get, se não tiver usuário, é lançada uma exeção
     }
 
     // Salva no banco de dados um dado usuário
