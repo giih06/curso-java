@@ -1,16 +1,21 @@
 package com.giovanna.course.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.giovanna.course.repositories.Order;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 // Serializeble trabnsforma os objetos em cadeias de bites para que o obj trafegue na rede, possa ser gravado em arquivos, etc
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_user")// nome da tabela
 public class User implements Serializable{
     
     // atributos basicos
@@ -23,6 +28,8 @@ public class User implements Serializable{
     private String password;
 
     // associacões
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();// Essa lista de pedidos do usuário é uma coleção
 
     // construtores
     public User() {
@@ -75,6 +82,10 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     // hashCode e Equals para id
