@@ -24,4 +24,9 @@ public class UserService {
         Optional<User> obj =  repository.findById(id);
         return obj.get(); // retorna um objeto do tipo user que estiver dentro do option
     }
+
+    // Salva no banco de dados um dado usuário
+    public User insert(User obj) {
+		return repository.save(obj);
+	}
 }
