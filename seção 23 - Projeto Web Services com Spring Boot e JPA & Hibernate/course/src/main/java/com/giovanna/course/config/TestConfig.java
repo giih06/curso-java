@@ -8,21 +8,27 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.giovanna.course.entities.Category;
 import com.giovanna.course.entities.Order;
 import com.giovanna.course.entities.User;
 import com.giovanna.course.entities.enums.OrderStatus;
+import com.giovanna.course.repositories.CategoryRepository;
 import com.giovanna.course.repositories.OrderRepository;
 import com.giovanna.course.repositories.UserRepository;
 
 @Configuration
 @Profile("test") // so vai rodar a configuração quando tiver no perfil 'test'
 public class TestConfig implements CommandLineRunner{
+
     // Com esse @ O spring, quando tiver rodando a aplicação irá resolver essa dependencia e associar uma instancia de userepository
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     // TUdo dentro desse método vai ser executado quando a aplicação for iniciada
     @Override
@@ -40,5 +46,12 @@ public class TestConfig implements CommandLineRunner{
 
         // salvando o o1, o2 e o3 no Banco de Dados
         orderRepository.saveAll(Arrays.asList(o1, o2, o3)); 
+
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers"); 
+
+        // salvando o cat1, cat2 e cat3 no banco de dados
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
     }  
 }
