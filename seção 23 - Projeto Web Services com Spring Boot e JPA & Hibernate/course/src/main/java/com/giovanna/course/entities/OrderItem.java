@@ -100,7 +100,12 @@ public class OrderItem implements Serializable{
         return true;
     }
 
-    
+    // métodos
+
+    // método do subtotal 
+    public Double getSubTotal() {
+		return price * quantity;
+	}
 
     
 
