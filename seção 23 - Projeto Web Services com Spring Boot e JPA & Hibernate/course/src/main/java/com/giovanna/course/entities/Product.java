@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,6 +49,10 @@ public class Product implements Serializable {
 		this.price = price;
 		this.imgUrl = imgUrl;
 	}
+
+    // Nesse caso usamos o set em vez do list para informar para o JPA que não terão repetições do mesmo item
+    @OneToMany(mappedBy = "id.product")// id do OrderItem e product do obj de Product no OrderItemPK
+    private Set<OrderItem> items = new HashSet<>();
 
     // getters e setters
 	public Long getId() {
@@ -90,6 +97,16 @@ public class Product implements Serializable {
 
 	public Set<Category> getCategories() {
 		return categories;
+	}
+
+    @JsonIgnore
+	public Set<Order> getOrders() {
+		Set<Order> set = new HashSet<>();
+        // percorre a coleção items
+		for (OrderItem x : items) {// para cada elemento da coleção
+			set.add(x.getOrder());// será adicionado o objeto order associado ao OrderItem
+		}
+		return set;
 	}
 
     // hashCode e equals para id
