@@ -13,6 +13,8 @@ import com.giovanna.course.repositories.UserRepository;
 import com.giovanna.course.services.exceptions.DatabaseException;
 import com.giovanna.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
     
@@ -39,6 +41,7 @@ public class UserService {
         try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
+            // erro 404 ( not found )
 			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
@@ -47,9 +50,14 @@ public class UserService {
 
     // update User
     public User update(Long id, User obj) {
+        try{
 		User entity = repository.getReferenceById(id);
 		updateData(entity, obj);
 		return repository.save(entity);
+        } catch (EntityNotFoundException e) {
+            // erro 404 ( not found )
+            throw new ResourceNotFoundException(id); 
+        }
 	}
 
     // update o user no banco de dados
