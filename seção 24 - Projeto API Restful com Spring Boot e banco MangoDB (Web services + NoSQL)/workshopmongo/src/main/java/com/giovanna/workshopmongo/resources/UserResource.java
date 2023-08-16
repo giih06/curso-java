@@ -1,26 +1,27 @@
 package com.giovanna.workshopmongo.resources;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.giovanna.workshopmongo.domain.User;
+import com.giovanna.workshopmongo.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
 
+    // o controlador Rest acessa o serviço
+    @Autowired
+    private UserService service;
+
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
-        List<User> list = new ArrayList<>();
-        User maria = new User("1001", "Maria Brown", "maria@gmail.com");
-        User alex = new User("1002", "Alex Green", "alex@gmail.com");
-        list.addAll(Arrays.asList(maria, alex));
-        return ResponseEntity.ok().body(list);
+        List<User> list = service.findAll(); // Busca no banco de dados os usuários e guarda na lista
+        return ResponseEntity.ok().body(list);// devolve a lista na resposta da requisição
     }
 }

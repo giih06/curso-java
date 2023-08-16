@@ -2,9 +2,14 @@ package com.giovanna.workshopmongo.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user") //indica uma coleção para o MangoDB
 public class User implements Serializable{
 
     // atributos básicos
+    @Id 
     private String id;
     private String name;
     private String email;
