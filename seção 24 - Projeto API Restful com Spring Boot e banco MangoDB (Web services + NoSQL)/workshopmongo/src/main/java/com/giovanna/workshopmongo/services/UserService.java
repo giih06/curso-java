@@ -34,6 +34,13 @@ public class UserService {
 		return repo.insert(obj);
 	}   
 
+    // deleta   
+    public void delete(String id) {
+		findById(id);// se não existir o id lança a exeção
+		repo.deleteById(id);
+	}
+
+    // trandorma para dto
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
