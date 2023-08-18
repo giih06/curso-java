@@ -23,6 +23,6 @@ public class PostService {
 
     // Consulta String ignorando maiúsculas e minuúsculas
     public List<Post> findByTitle(String text) {
-		return repo.findByTitleContainingIgnoreCase(text);
+		return repo.searchTitle(text);
 	}
 }
