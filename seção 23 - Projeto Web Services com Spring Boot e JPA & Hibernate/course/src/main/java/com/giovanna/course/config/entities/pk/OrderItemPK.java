@@ -1,10 +1,10 @@
-package com.giovanna.course.entities.pk;
+package com.giovanna.course.config.entities.pk;
 // essa classe terá uma referência para o produto e o pedido
 
 import java.io.Serializable;
 
-import com.giovanna.course.entities.Order;
-import com.giovanna.course.entities.Product;
+import com.giovanna.course.config.entities.Order;
+import com.giovanna.course.config.entities.Product;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;

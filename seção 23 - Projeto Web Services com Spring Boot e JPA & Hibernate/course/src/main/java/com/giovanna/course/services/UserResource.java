@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.giovanna.course.entities.User;
+import com.giovanna.course.config.entities.User;
 import com.giovanna.course.services.UserService;
 
 // recurso web da classe USer

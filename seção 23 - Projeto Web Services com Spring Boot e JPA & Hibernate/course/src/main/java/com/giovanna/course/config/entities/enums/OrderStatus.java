@@ -1,4 +1,4 @@
-package com.giovanna.course.entities.enums;
+package com.giovanna.course.config.entities.enums;
 
 public enum OrderStatus {
     WAITING_PAYMENT(1), // Aparece o numero 1 no banco de dados quando usado esse enum

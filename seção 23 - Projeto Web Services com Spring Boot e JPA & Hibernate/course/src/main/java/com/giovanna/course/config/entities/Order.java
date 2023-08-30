@@ -1,4 +1,4 @@
-package com.giovanna.course.entities;
+package com.giovanna.course.config.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.giovanna.course.entities.enums.OrderStatus;
+import com.giovanna.course.config.entities.enums.OrderStatus;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

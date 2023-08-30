@@ -1,4 +1,4 @@
-package com.giovanna.course.entities;
+package com.giovanna.course.config.entities;
 
 import java.io.Serializable;
 import java.time.Instant;

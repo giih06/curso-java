@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.giovanna.course.entities.Category;
+import com.giovanna.course.config.entities.Category;
 import com.giovanna.course.services.CategoryService;
 
 // recurso web da classe Category

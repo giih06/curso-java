@@ -1,11 +1,11 @@
-package com.giovanna.course.entities;
+package com.giovanna.course.config.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.giovanna.course.entities.pk.OrderItemPK;
+import com.giovanna.course.config.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

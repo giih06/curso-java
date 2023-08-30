@@ -8,7 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.giovanna.course.entities.User;
+import com.giovanna.course.config.entities.User;
 import com.giovanna.course.repositories.UserRepository;
 import com.giovanna.course.services.exceptions.DatabaseException;
 import com.giovanna.course.services.exceptions.ResourceNotFoundException;
