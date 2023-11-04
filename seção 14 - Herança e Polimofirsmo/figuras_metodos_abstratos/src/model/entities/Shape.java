@@ -23,7 +23,6 @@ public abstract class Shape {
     }
 
     // metodos
-
     public abstract double area();
 
     

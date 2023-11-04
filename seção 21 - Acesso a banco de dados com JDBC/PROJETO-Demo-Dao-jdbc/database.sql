@@ -12,7 +12,7 @@ CREATE TABLE seller (
   BaseSalary double NOT NULL,
   DepartmentId int(11) NOT NULL,
   PRIMARY KEY (Id),
-  FOREIGN KEY (DepartmentId) REFERENCES department (id)
+  FOREIGN KEY (DepartmentId) REFERENCES department(id)
 );
 
 INSERT INTO department (Name) VALUES 
